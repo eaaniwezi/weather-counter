@@ -8,7 +8,7 @@ import 'package:fluttertoast/fluttertoast.dart';
 class GeolocatorRepo {
   late bool serviceEnabled;
   late LocationPermission permission;
-  static String apiKey = "xxxxxxxxxxxxxxxxx";
+  static String apiKey = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx";
   static String geoCodingUrl =
       "http://api.positionstack.com/v1/reverse?access_key=$apiKey&query=";
 

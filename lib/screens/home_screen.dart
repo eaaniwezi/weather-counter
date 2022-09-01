@@ -2,6 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:job_test_task/const/dark_mode_transition.dart';
 import 'package:job_test_task/states/counter/counter_cubit.dart';
 import 'package:job_test_task/states/weather/weather_bloc.dart';
 import 'package:job_test_task/widgets/bottom_nav_bar_widget.dart';
@@ -12,15 +13,21 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      floatingActionButton: BottomNavBarWidget(themeMode: themeMode),
-      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
-      appBar: AppBar(
-        centerTitle: true,
-        backgroundColor: Theme.of(context).primaryColor,
-        title: const Text("Weather Counter"),
+    final size = MediaQuery.of(context).size;
+    final circleOffset = Offset(size.width - 20, size.height - 20);
+    return DarkModeTransition(
+      offset: circleOffset,
+      isDark: themeMode == ThemeMode.dark ? true : false,
+      childBuilder: (context, x) => Scaffold(
+        floatingActionButton: BottomNavBarWidget(themeMode: themeMode),
+        floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
+        appBar: AppBar(
+          centerTitle: true,
+          backgroundColor: Theme.of(context).primaryColor,
+          title: const Text("Weather Counter"),
+        ),
+        body: _body(),
       ),
-      body: _body(),
     );
   }
 

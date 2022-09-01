@@ -32,15 +32,19 @@ class BottomNavBarWidget extends StatelessWidget {
                 Spacer(),
                 BlocBuilder<CounterCubit, CounterState>(
                   builder: (context, state) {
-                    return state.counterValue == 10
-                        ? Text("")
-                        : Buttons(
-                            iconName: Icons.add,
-                            onPress: () {
-                              BlocProvider.of<CounterCubit>(context)
+                    return AnimatedOpacity(
+                      opacity: state.counterValue == 10 ? 0 : 1,
+                      duration: const Duration(milliseconds: 400),
+                      child: Buttons(
+                        iconName: Icons.add,
+                        onPress: () {
+                          state.counterValue == 10
+                              ? null
+                              : BlocProvider.of<CounterCubit>(context)
                                   .increment(themeMode);
-                            },
-                          );
+                        },
+                      ),
+                    );
                   },
                 ),
               ],
@@ -58,15 +62,19 @@ class BottomNavBarWidget extends StatelessWidget {
                 Spacer(),
                 BlocBuilder<CounterCubit, CounterState>(
                   builder: (context, state) {
-                    return state.counterValue == 0
-                        ? Text("")
-                        : Buttons(
-                            iconName: Icons.remove,
-                            onPress: () {
-                              BlocProvider.of<CounterCubit>(context)
+                    return AnimatedOpacity(
+                      opacity: state.counterValue == 0 ? 0 : 1,
+                      duration: const Duration(milliseconds: 400),
+                      child: Buttons(
+                        iconName: Icons.remove,
+                        onPress: () {
+                          state.counterValue == 0
+                              ? null
+                              : BlocProvider.of<CounterCubit>(context)
                                   .decrement(themeMode);
-                            },
-                          );
+                        },
+                      ),
+                    );
                   },
                 ),
               ],

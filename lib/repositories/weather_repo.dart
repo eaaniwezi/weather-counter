@@ -8,7 +8,7 @@ import 'package:job_test_task/models/weather.dart';
 class WeatherRepo {
   static const weatherUrl =
       'http://api.openweathermap.org/data/2.5/weather?lat=';
-  static const apiKey = "xxxxxxxxxxxxxxxxxxx";
+  static const apiKey = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx";
 
   Future<Weather> fetchWeatherData(Position cordinates) async {
     var weatherDetails;
@@ -25,12 +25,5 @@ class WeatherRepo {
     } catch (e) {
       return weatherDetails;
     }
-
-    // var response = await http.get(
-    //   Uri.parse(
-    //       "$baseUrl/data/2.5/onecall?lat=$lat&lon=$lon&exclude=alerts,minutely&appid=$apiKey&units=metric&lang=ru"),
-    // );
-    // final cityData = jsonDecode(response.body);
-    // // return SearchedCityModel.fromJson(cityData);
   }
 }
